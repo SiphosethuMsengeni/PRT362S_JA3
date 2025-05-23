@@ -1,0 +1,96 @@
+/* Global Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F57A16;
+  color: white;
+  height: 100%;
+}
+
+/* Shared Page Layout */
+.page {
+  background-image: url('Background.jpg'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Logo Style */
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.logo span {
+  color: #F57A16; /* Orange for "F" */
+}
+
+/* Tagline Text */
+.tagline {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Form Style */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 320px;
+}
+
+input {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+/* Button Style */
+.btn {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: white;
+  color: #F57A16;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ffe3cf;
+}
+
+/* Login Link Below Button */
+.footer-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.link {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Optional: Logo Animation (if needed) */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
