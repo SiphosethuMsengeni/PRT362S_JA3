@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import './App.css';
+import ReviewPage from './ReviewPage'; // Assume you have this file/component
 
 const BuildPage = () => {
   const [form, setForm] = useState({
@@ -19,6 +19,8 @@ const BuildPage = () => {
     contactMethod: '',
   });
 
+  const [isReview, setIsReview] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -26,14 +28,25 @@ const BuildPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Form submitted! (Not connected to backend)');
-    console.log(form);
+    setIsReview(true);
   };
+
+  // Allow user to go back to edit
+  const handleEdit = () => {
+    setIsReview(false);
+  };
+
+  if (isReview) {
+    return <ReviewPage form={form} onEdit={handleEdit} />;
+  }
 
   return (
     <div className="build-form-container">
       <h2>Custom Build to Your Specification</h2>
       <form className="build-form" onSubmit={handleSubmit}>
+        {/* Your inputs, radio groups, selects here */}
+        {/* ... same as your original BuildPage inputs, unchanged ... */}
+
         <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
         <input type="text" name="contact" placeholder="Contact Number" onChange={handleChange} required />
@@ -86,19 +99,10 @@ const BuildPage = () => {
           <label><input type="radio" name="contactMethod" value="Email" onChange={handleChange} /> Email</label>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Review Your Build</button>
       </form>
 
-      <footer className="footer">
-        <h3>Stay Connected</h3>
-        <div className="subscribe-box">
-          <input type="email" placeholder="Email" />
-          <button>Subscribe</button>
-        </div>
-        <p>
-          Browse Our Range | Enquire About a Custom Build | Contact@RigForgeCo.com | Facebook
-        </p>
-      </footer>
+      {/* Footer etc. */}
     </div>
   );
 };

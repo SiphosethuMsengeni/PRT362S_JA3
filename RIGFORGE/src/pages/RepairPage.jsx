@@ -1,78 +1,59 @@
-// src/pages/ReadyBuilt/ReadyBuilt.jsx
-import { useState } from 'react';
-import Header from '../../components/Header/Header';
-import ProductCard from '../../components/ProductCard/ProductCard';
-import './ReadyBuilt.css';
+import React from 'react';
+//import './App.css';
 
-const ReadyBuilt = () => {
-  const [filter, setFilter] = useState('all');
-  const [sort, setSort] = useState('featured');
+const repairServices = [
+  {
+    title: 'Computer & Laptop',
+    description: 'With our 24 hour turnaround time, it’ll be back up in no time.',
+    image: '/images/computer-laptop.jpg'
+  },
+  {
+    title: 'Virus Removal',
+    description: 'Computer slowing you down? We’ll remove all viruses and malware.',
+    image: '/images/virus-removal.jpg'
+  },
+  {
+    title: 'Power Jack Repair',
+    description: 'We specialize in DC power jack repairs for all laptops and PCs.',
+    image: '/images/power-jack.jpg'
+  },
+  {
+    title: 'Data Recovery',
+    description: 'Recover lost files from broken computers or damaged drives.',
+    image: '/images/data-recovery.jpg'
+  },
+  {
+    title: 'Cracked Screen Repair',
+    description: 'Same day cracked screen repairs available for most models.',
+    image: '/images/cracked-screen.jpg'
+  },
+  {
+    title: 'In-Home Service',
+    description: 'We pick up and drop off your computer. No hidden costs.',
+    image: '/images/in-home-service.jpg'
+  }
+];
 
-  // Sample data
-  const systems = [
-    {
-      id: 1,
-      name: 'RigForge Titan X',
-      specs: ['Intel Core i9-13900K', 'NVIDIA RTX 4090', '32GB DDR5 RAM', '2TB NVMe SSD'],
-      price: 3499.99,
-      image: '/system-titan.jpg',
-      category: 'gaming'
-    },
-    // More systems...
-  ];
-
-  const filteredSystems = systems.filter(system => {
-    if (filter === 'all') return true;
-    return system.category === filter;
-  });
-
-  const sortedSystems = [...filteredSystems].sort((a, b) => {
-    if (sort === 'price-low') return a.price - b.price;
-    if (sort === 'price-high') return b.price - a.price;
-    return 0; // Default sorting (featured)
-  });
-
+const RepairPage = () => {
   return (
-    <div className="ready-built-page">
-      <Header />
-      <div className="page-container">
-        <h1 className="page-title">Ready-Built Computers</h1>
-        
-        <div className="filter-bar">
-          <select 
-            className="filter-select" 
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-          >
-            <option value="all">All Categories</option>
-            <option value="gaming">Gaming</option>
-            <option value="workstation">Workstation</option>
-            <option value="budget">Budget</option>
-          </select>
-          
-          <select 
-            className="filter-select" 
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-          >
-            <option value="featured">Sort By: Featured</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-          </select>
-        </div>
-        
-        <div className="systems-grid">
-          {sortedSystems.map(system => (
-            <ProductCard 
-              key={system.id}
-              product={system}
-              showDetailsButton
-            />
-          ))}
-        </div>
+    <div className="repair-page">
+      <h1 className="repair-title">Get Started With Your Computer Repairs</h1>
+      <p className="repair-subtitle">
+        We are quick and effective at repairing non-working, broken, or damaged computing items. 
+        We will exceed your expectations at a highly competitive rate.
+      </p>
+      <div className="repair-grid">
+        {repairServices.map((service, index) => (
+          <div key={index} className="repair-card">
+            <img src={service.image} alt={service.title} className="repair-image" />
+            <h2 className="repair-card-title">{service.title}</h2>
+            <p className="repair-card-desc">{service.description}</p>
+            <button className="repair-btn">Learn More</button>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default ReadyBuilt;
+export default RepairPage;

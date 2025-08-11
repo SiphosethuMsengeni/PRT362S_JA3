@@ -37,9 +37,10 @@ const MenuPage = () => {
             <span className="link-text">Ready Build</span>
           </Link>
           <Link to="/repair" className="sidebar-link" onClick={toggleMenu}>
-            <span className="link-icon">🛠️</span>
-            <span className="link-text">Repair</span>
-          </Link>
+  <span className="link-icon">🛠️</span>
+  <span className="link-text">Repair</span>
+</Link>
+
           <Link to="/cart" className="sidebar-link" onClick={toggleMenu}>
             <span className="link-icon">🛒</span>
             <span className="link-text">Cart</span>
