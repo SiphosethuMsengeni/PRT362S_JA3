@@ -34,7 +34,7 @@ const MenuPage = () => {
         <div className="sidebar-menu">
           <Link to="/ready-built" className="sidebar-link" onClick={toggleMenu}>
             <span className="link-icon">💻</span>
-            <span className="link-text">Ready Build</span>
+            <span className="link-text">Ready Built</span>
           </Link>
           <Link to="/repair" className="sidebar-link" onClick={toggleMenu}>
   <span className="link-icon">🛠️</span>
