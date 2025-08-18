@@ -1,18 +1,22 @@
+// App.js or AppWrapper
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 
 // Pages
 import WelcomePage from './pages/WelcomePage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
-import MenuPage from './pages/MenuPage';
+import AboutPage from './pages/AboutPage'; // ✅ changed
 import BuildPage from './pages/BuildPage';
 import ReviewPage from './pages/ReviewPage';
 import CartPage from './pages/CartPage';
 import RepairPage from './pages/RepairPage';
+import CheckoutPage from './pages/CheckoutPage'; 
+import Navbar from './pages/Navbar';
 
 function AppWrapper() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // track login state
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -32,74 +36,59 @@ function AppWrapper() {
 
   const navigate = useNavigate();
 
-  // Called when form changes in BuildPage
-  const updateForm = (newData) => {
-    setForm(prev => ({ ...prev, ...newData }));
+  // Login handler
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    navigate('/about'); // ✅ redirect to AboutPage after login
   };
 
-  // Called when user confirms build review
-  const goToReview = () => {
-    navigate('/review');
+  // Logout handler
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate('/login');
   };
 
-  // Called when user confirms review, go to cart
-  const goToCart = () => {
-    navigate('/cart');
-  };
+  // Update form state from BuildPage
+  const updateForm = (newData) => setForm(prev => ({ ...prev, ...newData }));
 
-  // Navigate back if needed
-  const goBackToBuild = () => {
-    navigate('/build');
-  };
-
-  const goBackToReview = () => {
-    navigate('/review');
-  };
+  // Navigation handlers
+  const goToReview = () => navigate('/review');
+  const goBackToBuild = () => navigate('/build');
+  const goToCart = () => navigate('/cart');
+  const goBackToReview = () => navigate('/review');
+  const goToCheckout = () => navigate('/checkout');
 
   return (
-    <Routes>
-      {/* Landing */}
-      <Route path="/" element={<WelcomePage />} />
+    <div style={{ paddingBottom: isLoggedIn ? '60px' : '0' }}> {/* Only add padding if navbar visible */}
+      <Routes>
+        {/* Landing & Auth */}
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
 
-      {/* Auth */}
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/login" element={<LoginPage />} />
+        {/* About Page (replaces Menu) */}
+        <Route path="/about" element={<AboutPage />} />
 
-      {/* Navigation Menu */}
-      <Route path="/menu" element={<MenuPage />} />
+        {/* Main Actions */}
+        <Route 
+          path="/build" 
+          element={<BuildPage form={form} onFormChange={updateForm} onNext={goToReview} />} 
+        />
+        <Route 
+          path="/review" 
+          element={<ReviewPage form={form} onEdit={goBackToBuild} onConfirm={goToCart} />} 
+        />
+        <Route 
+          path="/cart" 
+          element={<CartPage form={form} onBack={goBackToReview} onCheckout={goToCheckout} />} 
+        />
+        <Route path="/repair" element={<RepairPage />} />
+        <Route path="/checkout" element={<CheckoutPage form={form} />} />
+      </Routes>
 
-      {/* Main Actions */}
-      <Route 
-        path="/build" 
-        element={
-          <BuildPage 
-            form={form} 
-            onFormChange={updateForm} 
-            onNext={goToReview} 
-          />
-        } 
-      />
-      <Route 
-        path="/review" 
-        element={
-          <ReviewPage 
-            form={form} 
-            onEdit={goBackToBuild} 
-            onConfirm={goToCart} 
-          />
-        } 
-      />
-      <Route 
-        path="/cart" 
-        element={
-          <CartPage 
-            form={form} 
-            onBack={goBackToReview} 
-          />
-        } 
-      />
-      <Route path="/repair" element={<RepairPage />} />
-    </Routes>
+      {/* Navbar only visible after login */}
+      {isLoggedIn && <Navbar onLogout={handleLogout} />}
+    </div>
   );
 }
 

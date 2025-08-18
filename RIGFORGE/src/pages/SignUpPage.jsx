@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ Make sure you're using react-router
+import { useNavigate } from 'react-router-dom'; 
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const SignUpPage = () => {
     setMessage('✅ Account created! Redirecting to login...');
 
     setTimeout(() => {
-      navigate('/login'); // ✅ Redirect to login page
+      navigate('/login'); 
     }, 1500);
   };
 
