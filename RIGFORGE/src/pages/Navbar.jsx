@@ -5,17 +5,14 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
-   const tabs = [
-  { label: 'Home', path: '/', icon: '🏠' }, 
-  { label: 'Build', path: '/build', icon: '🛠️' },
-  { label: 'Ready Build', path: '/ready-build', icon: '✅' },
-  { label: 'Repair', path: '/repair', icon: '💻' },
-  { label: 'Cart', path: '/cart', icon: '🛒' },
-  { label: 'Checkout', path: '/checkout', icon: '💳' },
-  { label: 'Logout', path: '/login', icon: '🚪' },
-
-
+  const tabs = [
+    { label: 'Home', path: '/', icon: '🏠' }, 
+    { label: 'Build', path: '/build', icon: '🛠️' },
+    { label: 'Ready Build', path: '/ready-built', icon: '✅' }, // ✅ corrected path
+    { label: 'Repair', path: '/repair', icon: '💻' },
+    { label: 'Cart', path: '/cart', icon: '🛒' },
+    { label: 'Checkout', path: '/checkout', icon: '💳' },
+    { label: 'Logout', path: '/login', icon: '🚪' },
   ];
 
   return (
