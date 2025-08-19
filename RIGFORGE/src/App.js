@@ -1,4 +1,4 @@
-// App.js or AppWrapper
+// App.js
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
@@ -7,16 +7,17 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import WelcomePage from './pages/WelcomePage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
-import AboutPage from './pages/AboutPage'; // ✅ changed
+import AboutPage from './pages/AboutPage';
 import BuildPage from './pages/BuildPage';
+import ReadyBuiltPage from './pages/ReadyBuiltPage';
 import ReviewPage from './pages/ReviewPage';
 import CartPage from './pages/CartPage';
 import RepairPage from './pages/RepairPage';
-import CheckoutPage from './pages/CheckoutPage'; 
+import CheckoutPage from './pages/CheckoutPage';
 import Navbar from './pages/Navbar';
 
 function AppWrapper() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // track login state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -36,51 +37,55 @@ function AppWrapper() {
 
   const navigate = useNavigate();
 
-  // Login handler
+  // Login & Logout handlers
   const handleLogin = () => {
     setIsLoggedIn(true);
-    navigate('/about'); // ✅ redirect to AboutPage after login
+    navigate('/about');
   };
 
-  // Logout handler
   const handleLogout = () => {
     setIsLoggedIn(false);
     navigate('/login');
   };
 
-  // Update form state from BuildPage
+  // Update form state
   const updateForm = (newData) => setForm(prev => ({ ...prev, ...newData }));
 
   // Navigation handlers
   const goToReview = () => navigate('/review');
   const goBackToBuild = () => navigate('/build');
-  const goToCart = () => navigate('/cart');
+  const goBackToReadyBuiltPage = () => navigate('/ready-built');
   const goBackToReview = () => navigate('/review');
+  const goToCart = () => navigate('/cart');
   const goToCheckout = () => navigate('/checkout');
 
   return (
-    <div style={{ paddingBottom: isLoggedIn ? '60px' : '0' }}> {/* Only add padding if navbar visible */}
+    <div style={{ paddingBottom: isLoggedIn ? '60px' : '0' }}>
       <Routes>
         {/* Landing & Auth */}
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
 
-        {/* About Page (replaces Menu) */}
+        {/* About Page */}
         <Route path="/about" element={<AboutPage />} />
 
         {/* Main Actions */}
-        <Route 
-          path="/build" 
-          element={<BuildPage form={form} onFormChange={updateForm} onNext={goToReview} />} 
+        <Route
+          path="/build"
+          element={<BuildPage form={form} onFormChange={updateForm} onNext={goToReview} />}
         />
-        <Route 
-          path="/review" 
-          element={<ReviewPage form={form} onEdit={goBackToBuild} onConfirm={goToCart} />} 
+        <Route
+          path="/ready-built"
+          element={<ReadyBuiltPage onBack={goBackToReadyBuiltPage} />}
         />
-        <Route 
-          path="/cart" 
-          element={<CartPage form={form} onBack={goBackToReview} onCheckout={goToCheckout} />} 
+        <Route
+          path="/review"
+          element={<ReviewPage form={form} onEdit={goBackToBuild} onConfirm={goToCart} />}
+        />
+        <Route
+          path="/cart"
+          element={<CartPage form={form} onBack={goBackToReview} onCheckout={goToCheckout} />}
         />
         <Route path="/repair" element={<RepairPage />} />
         <Route path="/checkout" element={<CheckoutPage form={form} />} />
