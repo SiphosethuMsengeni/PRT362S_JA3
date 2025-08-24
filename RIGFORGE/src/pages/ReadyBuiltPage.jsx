@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'; // Adjust path if needed
+import '../App.css'; 
 
 const pcs = [
   {
@@ -10,7 +10,7 @@ const pcs = [
     ram: '32GB',
     storage: '1TB SSD',
     os: 'Windows 11',
-  image: '/Gaming-Desktop.jpg'
+  image: '/images/Gaming-Desktop.jpg'
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const pcs = [
     ram: '64GB',
     storage: '2TB SSD',
     os: 'Ubuntu 20.04',
-  image: '/Workstation-Desktop.jpg'
+  image: 'images/Workstation-Desktop.jpg'
   },
   {
     id: 3,
