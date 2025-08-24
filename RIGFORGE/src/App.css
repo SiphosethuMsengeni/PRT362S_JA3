@@ -1240,14 +1240,17 @@ button:hover {
   box-shadow: 0 10px 28px rgb(240 147 8 / 0.6);
 }
 
-pc-image {
+.pc-image {
   width: 100%;
-  height: 160px;
+  max-width: 300px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 18px;
-  filter: brightness(0.9);
-  transition: filter 0.3s ease;
+  border-radius: 12px;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  display: block;
+  filter: brightness(0.95);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .product-item:hover .pc-image {
@@ -1284,4 +1287,85 @@ pc-image {
 .view-button:hover {
   background-color: #d46c00;
   box-shadow: 0 4px 16px #d46c00aa;
+}
+
+
+/* === COMPONENTVIEWPAGE STYLES === */
+
+.component-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-image: url('./images/Background.png'); 
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(240, 147, 8, 0.3);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+}
+
+.component-page .pc-image-large {
+  width: 80%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  filter: brightness(0.9);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.component-page .pc-image-large:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.component-page h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: rgb(240, 147, 8); 
+}
+
+.component-page p {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #ccc; 
+}
+
+.component-page .view-button {
+  margin-top: 25px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  background-color: rgb(240, 147, 8); 
+  color: black;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgb(240, 147, 8 / 0.6);
+}
+
+.component-page .view-button:hover {
+  background-color: #d46c00;
+  box-shadow: 0 4px 16px #d46c00aa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .component-page {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .component-page .pc-image-large {
+    width: 100%;
+  }
+
+  .component-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .component-page p {
+    font-size: 0.95rem;
+  }
 }

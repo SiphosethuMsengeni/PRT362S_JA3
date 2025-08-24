@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import MenuPage from './pages/MenuPage';
 import BuildPage from './pages/BuildPage';
 import ReadyBuiltPage from './pages/ReadyBuiltPage';
+import ComponentViewPage from './pages/ComponentViewPage';
 import ReviewPage from './pages/ReviewPage';
 import CartPage from './pages/CartPage';
 import RepairPage from './pages/RepairPage';
@@ -53,10 +54,6 @@ function AppWrapper() {
     navigate('/build');
   };
 
-  const goBackToReadyBuiltPage = () => {
-    navigate('/ready-built')
-  };
-
   const goBackToReview = () => {
     navigate('/review');
   };
@@ -88,7 +85,13 @@ function AppWrapper() {
         path="/ready-built"
         element={
           <ReadyBuiltPage
-            onBack={goBackToReadyBuiltPage}
+          />
+        }
+      />
+      <Route
+        path="/details/:id"
+        element={
+          <ComponentViewPage
           />
         }
       />
