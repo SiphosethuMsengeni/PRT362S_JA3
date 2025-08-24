@@ -1,6 +1,17 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css'; 
+
+// Import images from src/images
+import gamingDesktop from '../images/Gaming-Desktop.jpg';
+import workstationDesktop from '../images/Workstation-Desktop.webp'; 
+import budgetPC from '../images/Budget-PC.jpg';
+import gamingPC from '../images/Gaming-PC.jpg';
+import ultrabook from '../images/Ultrabook(MacBook).jpg';
+import miniPC from '../images/Mini-PC.webp';
+import creatorPC from '../images/Creator-PC.jpg';
+import officeDesktop from '../images/Office-Desktop.jpg';
+import highEndGamingRig from '../images/High-End-Gaming-Desktop.jpg';
+import pc from '../images/PC.webp';
 
 const pcs = [
   {
@@ -10,7 +21,7 @@ const pcs = [
     ram: '32GB',
     storage: '1TB SSD',
     os: 'Windows 11',
-  image: '/images/Gaming-Desktop.jpg'
+  image: gamingDesktop
   },
   {
     id: 2,
@@ -19,7 +30,7 @@ const pcs = [
     ram: '64GB',
     storage: '2TB SSD',
     os: 'Ubuntu 20.04',
-  image: 'images/Workstation-Desktop.jpg'
+  image: workstationDesktop
   },
   {
     id: 3,
@@ -28,7 +39,7 @@ const pcs = [
     ram: '16GB',
     storage: '512GB SSD',
     os: 'Windows 10',
-  image: '/Budget-PC.jpg'
+  image: budgetPC
   },
   {
     id: 4,
@@ -37,7 +48,7 @@ const pcs = [
     ram: '16GB',
     storage: '1TB SSD',
     os: 'Windows 11',
-  image: '/Gaming-PC.jpg'
+  image: gamingPC
   },
   {
     id: 5,
@@ -46,16 +57,16 @@ const pcs = [
     ram: '16GB',
     storage: '512GB SSD',
     os: 'macOS Monterey',
-  image: '/Ultrabook(MacBook).jpg'
+  image: ultrabook
   },
   {
     id: 6,
     name: 'Mini PC',
-    processor: 'Intel Core i3',
-    ram: '8GB',
+    processor: 'Celeron',
+    ram: '500GB',
     storage: '256GB SSD',
-    os: 'Windows 10',
-  image: '/Mini-PC.jpg'
+    os: 'OS',
+  image: miniPC
   },
   {
     id: 7,
@@ -64,7 +75,7 @@ const pcs = [
     ram: '32GB',
     storage: '2TB NVMe SSD',
     os: 'Windows 11 Pro',
-    image: '/Creator-PC.jpg'
+    image: creatorPC
   },
   {
     id: 8,
@@ -73,7 +84,7 @@ const pcs = [
     ram: '8GB',
     storage: '1TB HDD',
     os: 'Windows 10 Pro',
-    image: '/Office-Desktop.jpg'
+    image: officeDesktop
   },
   {
     id: 9,
@@ -82,57 +93,21 @@ const pcs = [
     ram: '64GB DDR5',
     storage: '2TB NVMe SSD + 4TB HDD',
     os: 'Windows 11 Pro',
-    image: '/High-End-Gaming-Desktop.jpg'
+    image: highEndGamingRig
   },
   {
     id: 10,
-    name: 'Portable Mini Workstation',
-    processor: 'Apple M2',
-    ram: '16GB',
-    storage: '1TB SSD',
-    os: 'macOS Ventura',
-    image: '/portable-mini-workstation.jpg'
+    name: 'PC',
+    processor: 'Intel Core i3',
+    ram: '8GB',
+    storage: '256GB SSD',
+    os: 'Windows 10',
+    image: pc
   }
 ];
 
 const ReadyBuiltPage = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen(prev => !prev);
-
-   return (
-       <div className="menu-page">
-         <div className={`overlay ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}></div>
-   
-         <nav className={`sidebar ${menuOpen ? 'open' : ''}`}>
-           <div className="sidebar-menu">
-             <Link to="/ready-built" className="sidebar-link" onClick={toggleMenu}>
-               <span className="link-icon">💻</span>
-               <span className="link-text">Ready Built</span>
-             </Link>
-             <Link to="/repair" className="sidebar-link" onClick={toggleMenu}>
-     <span className="link-icon">🛠️</span>
-     <span className="link-text">Repair</span>
-   </Link>
-   
-             <Link to="/cart" className="sidebar-link" onClick={toggleMenu}>
-               <span className="link-icon">🛒</span>
-               <span className="link-text">Cart</span>
-             </Link>
-             {/* Add logout functionality here if needed */}
-           </div>
-         </nav>
-   
-         <div className="menu-content">
-           <header className="menu-header">
-             <button className="menu-icon" onClick={toggleMenu} aria-label="Toggle menu">
-               ☰
-             </button>
-             <div className="menu-logo">
-               RIG<span className="logo-accent">FORGE</span>
-             </div>
-           </header>
-
-      {/* Main Content */}
+  return (
       <main className="main-section">
       <div className="pc-grid">
         {pcs.map((pc) => (
@@ -152,8 +127,6 @@ const ReadyBuiltPage = () => {
         ))}
       </div>
       </main>
-          </div>
-      </div>
   );
 };
 

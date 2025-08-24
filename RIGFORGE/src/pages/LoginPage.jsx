@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => { // receive onLogin from props
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +13,11 @@ const LoginPage = () => {
 
     if (email === validEmail && password === validPassword) {
       setMessage('✅ Login successful! Redirecting...');
-      setTimeout(() => {
-        navigate('/menu'); // ✅ Redirect to MenuPage instead of BuildPage
-      }, 1500);
+      
+      // Trigger the AppWrapper login handler
+      if (onLogin) {
+        onLogin(); 
+      }
     } else {
       setMessage('❌ Invalid email or password.');
     }
