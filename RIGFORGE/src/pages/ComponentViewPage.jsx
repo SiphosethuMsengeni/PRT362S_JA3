@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
-import '../App.css'; 
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import '../App.css';
 
 // Import images from src/images
 import gamingDesktop from '../images/Gaming-Desktop.jpg';
@@ -106,28 +107,27 @@ const pcs = [
   }
 ];
 
-const ReadyBuiltPage = () => {
+const ComponentViewPage = () => {
+  const { id } = useParams();
+  const pc = pcs.find((item) => item.id === parseInt(id));
+
+  if (!pc) {
+    return <h2 style={{ textAlign: 'center', color: 'red' }}>PC not found!</h2>;
+  }
+
   return (
-      <main className="main-section">
-      <div className="pc-grid">
-        {pcs.map((pc) => (
-          <div key={pc.id} className="product-item">
-            <img src={pc.image} alt={pc.name} className="pc-image"/>
-            <div className="pc-details">
-              <h2>{pc.name}</h2>
-              <p><strong>Processor:</strong> {pc.processor}</p>
-              <p><strong>RAM:</strong> {pc.ram}</p>
-              <p><strong>Storage:</strong> {pc.storage}</p>
-              <p><strong>OS:</strong> {pc.os}</p>
-              <Link to={`/details/${pc.id}`}>
-              <button className="view-button">VIEW</button> 
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
-      </main>
+    <div className="component-page">
+      <img src={pc.image} alt={pc.name} className="pc-image-large"/>
+      <h1>{pc.name}</h1>
+      <p><strong>Processor:</strong> {pc.processor}</p>
+      <p><strong>RAM:</strong> {pc.ram}</p>
+      <p><strong>Storage:</strong> {pc.storage}</p>
+      <p><strong>OS:</strong> {pc.os}</p>
+      <Link to="/ready-built">
+        <button className="view-button">Back to Ready Built</button>
+      </Link>
+    </div>
   );
 };
 
-export default ReadyBuiltPage;
+export default ComponentViewPage;

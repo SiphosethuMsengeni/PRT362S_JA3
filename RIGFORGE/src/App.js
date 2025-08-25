@@ -10,11 +10,18 @@ import LoginPage from './pages/LoginPage';
 import AboutPage from './pages/AboutPage';
 import BuildPage from './pages/BuildPage';
 import ReadyBuiltPage from './pages/ReadyBuiltPage';
+import ComponentViewPage from './pages/ComponentViewPage';
 import ReviewPage from './pages/ReviewPage';
 import CartPage from './pages/CartPage';
 import RepairPage from './pages/RepairPage';
 import CheckoutPage from './pages/CheckoutPage';
 import Navbar from './pages/Navbar';
+import ComputerLaptop from './pages/Computer&Laptop';
+import VirusRemoval from './pages/VirusRemoval';
+import PowerJackRepair from './pages/PowerJackRepair';
+import DataRecovery from './pages/DataRecovery';
+import CrackedScreenRepair from './pages/CrackedScreenRepair';
+import InHomeService from './pages/InHomeService';
 
 function AppWrapper() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,7 +68,7 @@ function AppWrapper() {
 
   return (
     <div style={{ paddingBottom: isLoggedIn ? '60px' : '0' }}>
-      <Routes>
+  <Routes>
         {/* Landing & Auth */}
         <Route path="/" element={<WelcomePage />} />
         <Route path="/signup" element={<SignUpPage />} />
@@ -79,6 +86,9 @@ function AppWrapper() {
           path="/ready-built"
           element={<ReadyBuiltPage onBack={goBackToReadyBuiltPage} />}
         />
+        <Route path="/details/:id" 
+        element={<ComponentViewPage />} 
+        />
         <Route
           path="/review"
           element={<ReviewPage form={form} onEdit={goBackToBuild} onConfirm={goToCart} />}
@@ -87,8 +97,30 @@ function AppWrapper() {
           path="/cart"
           element={<CartPage form={form} onBack={goBackToReview} onCheckout={goToCheckout} />}
         />
-        <Route path="/repair" element={<RepairPage />} />
-        <Route path="/checkout" element={<CheckoutPage form={form} />} />
+        <Route path="/repair" 
+        element={<RepairPage />} 
+        />
+        <Route path="/checkout" 
+        element={<CheckoutPage form={form} />} 
+        />
+        <Route path="/computer-laptop" 
+        element={<ComputerLaptop />} 
+        />
+        <Route path="/virus-removal"
+        element={<VirusRemoval />}
+        />
+        <Route path="/power-jack-repair"
+        element={<PowerJackRepair />}
+        />
+        <Route path="/data-recovery"
+        element={<DataRecovery />}
+        />
+        <Route path="/cracked-screen-repair"
+        element={<CrackedScreenRepair />}
+        />
+        <Route path="/in-home-service"
+        element={<InHomeService />}
+        />
       </Routes>
 
       {/* Navbar only visible after login */}
