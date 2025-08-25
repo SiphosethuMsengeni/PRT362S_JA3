@@ -1578,3 +1578,45 @@ background: url('./images/Background.png');
 .checkout-btn:hover {
   background-color: #d46410;
 }
+
+/* === SERVICES PAGE STYLES === */
+.service-page {
+  padding: 2rem;
+  background: url('./images/Background.png');
+  color: #fff;
+  content: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.service-page h1 {
+  color: #f57b0a;
+  margin-bottom: 1rem;
+}
+
+.service-page p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.service-page ul {
+  margin-bottom: 2rem;
+  padding-left: 1.2rem;
+}
+
+.service-page ul li {
+  margin-bottom: 0.5rem;
+  color: #ccc;
+}
+
+.repair-button {
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: d46410;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
