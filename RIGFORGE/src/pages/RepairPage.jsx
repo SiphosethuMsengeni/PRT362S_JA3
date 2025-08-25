@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import './App.css';
 
 // Import images from src/images
@@ -56,7 +57,17 @@ const RepairPage = () => {
             <img src={service.image} alt={service.title} className="repair-image" />
             <h2 className="repair-card-title">{service.title}</h2>
             <p className="repair-card-desc">{service.description}</p>
-            <button className="repair-btn">Learn More</button>
+            <Link to={
+              index === 0 ? '/computer-laptop'
+              : index === 1 ? '/virus-removal'
+              : index === 2 ? '/power-jack-repair'
+              : index === 3 ? '/data-recovery'
+              : index === 4 ? '/cracked-screen-repair'
+              : index === 5 ? '/in-home-service'
+              : '/repair'
+            }>
+              <button className="view-button">Learn More</button>
+            </Link>
           </div>
         ))}
       </div>
