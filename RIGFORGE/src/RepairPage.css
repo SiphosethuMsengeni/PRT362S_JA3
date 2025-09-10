@@ -1,0 +1,189 @@
+.repair-page {
+  background-image: url('./images/Background.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 150vh;
+  padding: 20px 40px;
+  font-family: 'Poppins', sans-serif;
+  display: absolute;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  top: 0px;
+  
+}
+
+.repair-page h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(240, 147, 8);
+  margin-bottom: 10px;
+  text-align: center;
+  position: relative;
+  top: 100px;
+}
+
+.repair-page p {
+  color: #ddd;
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  position: relative;
+  top: 100px;
+  left: 600px;
+}
+
+.upload-section {
+  background-image: url('./images/Image1.jpg');
+  background-size: cover;
+  margin: 20px auto;
+  padding: 80px;
+  text-align: center;
+  border: 2px dashed #888;
+  border-radius: 12px;
+  background-color: #fff;
+  width: 10%;
+  position: relative;
+  top: 100px;
+  left: 35px;
+}
+
+.upload-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #f57b0a;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+
+.description-section {
+  margin: 20px auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 200px;
+  
+}
+
+.description-label {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(240, 147, 8);
+  font-weight: bold;
+  margin-bottom: 8px;
+  position: relative;
+  left: 220px;
+  top: 150px;
+  
+}
+
+.description-input {
+  resize: none;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+  position: relative;
+  height: 100px;
+  width: 50%;
+  
+  
+}
+
+.description-input:focus {
+  border-color: #f57b0a;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+.upload-input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.submit-btn {
+  background-color: #f57b0a;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  top: 200px;
+  left: 840px;
+}
+
+.repair-section1 {
+  margin: 20px auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 550px;
+  left: 200px;
+  
+}
+
+.customer-section2 {
+  margin: 20px auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -50px;
+  left: 200px;
+  
+}
+
+.number-section3 {
+  margin: 20px auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -25px;
+  left: 200px;
+  
+}
+
+.repair-label1 {
+
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(240, 147, 8);
+  position: relative;
+  left: 50px;
+  top: -10px;
+}
+
+.customer-label2 {
+
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(240, 147, 8);
+  position: relative;
+  left: 75px;
+  top: -25px;
+}
+
+.number-label3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(240, 147, 8);
+  position: relative;
+  left: 80px;
+  top: -10px;
+}
+
+
+

@@ -1,0 +1,324 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+.build-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* BACKGROUND - CHANGE Z-INDEX TO -1 */
+.build-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  background-image: url('./images/Background.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(13px) brightness(0.6);
+  z-index: 0;
+}
+
+/* MAIN CONTENT CONTAINER - ADD THIS */
+.build-main-container {
+  max-width: 1400px;
+  margin: 120px auto 2rem auto; /* Added top margin for fixed nav */
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2; /* Ensure content is above background */
+}
+
+/* COMPONENT SECTIONS - ADD THIS */
+.component-section {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.component-section.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* SECTION HEADER - ADD THIS */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-header h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.section-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn,
+.view-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ddd;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.view-toggle-btn:hover {
+  background: rgba(255, 122, 22, 0.2);
+  color: #F57A16;
+}
+
+/* PARTS CONTAINER - ADD THIS */
+.build-main-container {
+  max-width: 1300px;
+  margin: 8rem auto 2rem auto;
+  margin-top: 220px;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* GRID VIEW - ADD THIS */
+.parts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.part-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.part-card:hover {
+  transform: translateY(-2px);
+  border-color: #F57A16;
+  box-shadow: 0 4px 20px rgba(245, 122, 22, 0.1);
+}
+
+.part-image {
+  width: 100%;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.part-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.part-card:hover .part-image img {
+  transform: scale(1.05);
+}
+
+.part-info h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.part-specs {
+  color: #ddd;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.part-details {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.part-brand {
+  color: #F57A16;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.part-price {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.add-to-build-btn {
+  width: 100%;
+  background: #F57A16;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.add-to-build-btn:hover {
+  background: #e5690d;
+  transform: translateY(-1px);
+}
+
+/* LOADING STATES - ADD THIS */
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: #ddd;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #F57A16;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state p {
+  margin: 0.5rem 0;
+}
+
+/* KEEP YOUR EXISTING NAVIGATION STYLES (they look good) */
+.builder-nav-container {
+  background-color: rgba(17, 17, 17, 1);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  width: 100%;
+  border-bottom: 2px solid #F57A16;
+}
+
+.nav-scroll-container {
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding: 0 2.5rem;
+}
+
+.nav-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-items {
+  display: inline-flex;
+  list-style: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.75rem 0;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 70px;
+  transition: all 0.2s ease;
+  color: #ddd;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item:hover {
+  background: rgba(255, 122, 22, 0.15);
+  color: white;
+}
+
+.nav-item.active {
+  background: rgba(255, 122, 22, 0.2);
+  color: #F57A16;
+  border: 1px solid #F57A16;
+}
+
+.category-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .nav-item {
+    padding: 0.7rem 1rem;
+    min-width: 60px;
+  }
+  
+  .category-name {
+    font-size: 0.7rem;
+  }
+  
+  .nav-scroll-container {
+    padding: 0 1rem;
+  }
+  
+  .build-main-container {
+    margin-top: 140px; /* More space on mobile */
+    padding: 0 0.5rem;
+  }
+  
+  .component-section {
+    padding: 1rem;
+  }
+}
